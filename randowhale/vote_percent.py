@@ -1,7 +1,6 @@
 
 import random
 import logging
-import math
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
@@ -24,7 +23,8 @@ class VotePercent:
     """
 
     def __init__(self, probability_dimensions=None):
-        self.probability_dimensions = probability_dimensions or PROBABILITY_DIMENSIONS
+        self.probability_dimensions = probability_dimensions or \
+                                      PROBABILITY_DIMENSIONS
         self.check_validity_of_dimensions()
         self.choices = []
         self.weights = []
@@ -32,7 +32,8 @@ class VotePercent:
     def check_validity_of_dimensions(self):
         weight = sum([p[2] * 100 for p in self.probability_dimensions])
         if weight != 100:
-            raise ValueError("Invalid probability dimensions. Sum of the weights must be 1. It's %s", weight)
+            raise ValueError("Invalid probability dimensions. Sum of the "
+                             "weights must be 1. It's %s", weight)
 
     def get_population_and_weight(self):
         choices = []
@@ -48,5 +49,6 @@ class VotePercent:
 
     def pick_percent(self):
         population, weight = self.get_population_and_weight()
-        dimensioned_choices = random.choices(population=population, weights=weight, k=1)
+        dimensioned_choices = random.choices(
+            population=population, weights=weight, k=1)
         return random.choice(dimensioned_choices[0])
