@@ -5,7 +5,7 @@ from enum import Enum
 class RefundReason(Enum):
     AUTHOR_IN_BLACKLIST = "Author is in blacklist"
     SENDER_IN_BLACKLIST = "Sender is in blacklist"
-    POST_IS_TOO_NEW = "Post age must be lower than 5 minutes"
+    POST_IS_TOO_NEW = "Post age must be older than 5 minutes"
     POST_IS_TOO_OLD = "Post is too old"
     POST_IS_ALREADY_VOTED = "Post is already voted"
 
